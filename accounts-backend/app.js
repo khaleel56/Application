@@ -8,14 +8,13 @@ const Router=require('./routers');
 const { Parser } = require('pg-protocol/dist/parser');
 require('./Model/DbSetup.js')
 
+const Controller = require('./Controller/userController')
+
+
 app.use(cors());
+app.use(express.urlencoded({extended:false}));
+app.use(express.json())
 app.use('/app',Router)
-// app.use(express.urlencoded({extended:false}));
-// app.use(express.json())
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
 
 
 app.listen(5000, ()=>{
